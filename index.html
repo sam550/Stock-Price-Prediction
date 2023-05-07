@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Share price prediction</title>
+
+	
+	<style>
+		.search-container {
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+	
+		}
+		.search-container input[type=text] {
+			padding: 5px;
+			border: none;
+			border-radius: 3px;
+			box-shadow: 0px 0px 5px #ccc; 
+			width: 300px;
+		}
+		.search-container button {
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			padding: 8px 15px;
+			border-radius: 3px;
+			cursor: pointer;
+			margin-left: 10px;
+		}
+		.search-container button:hover {
+			background-color: #3e8e41;
+		}
+		.button-container {
+			display: flex;
+			align-items: center;
+		}
+		.button-container button {
+			background-color: #008CBA;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 3px;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		.button-container button:hover {
+			background-color: #006080;
+		}
+	</style>
+</head>
+<body>
+<b> Enter stock symbol </b>
+
+	<div class="search-container">
+		<input type="text" id="search" name="search">
+	</div>
+
+	<div class="button-container">
+		<button onclick="getPriceHistory()">Get Price History</button>
+		<button onclick="trainandpredict()">Train and Predict</button>
+	</div>
+
+	
+	<script>
+		function getPriceHistory() {
+			var symbol = document.getElementById("search").value;
+			if (symbol) {
+				fetch("/extract_data/" + symbol)
+				.then(response => response.json())
+				.then(data => {
+					// Display the extracted data on the webpage
+				});
+			}
+		}
+		function trainandpredict() {
+			var symbol = document.getElementById("search").value;
+			if (symbol){
+				fetch("/train_data/" + symbol)
+				.then(response => response.json())
+				.then(data => {
+					// Display the extracted data on the webpage
+				});
+			}
+		}
+		</script>
+</body>
+</html>
+
+
+
